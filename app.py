@@ -3,9 +3,12 @@ from flask_cors import cross_origin
 import sklearn
 import pickle
 import pandas as pd
+import bz2
+import _pickle as cPickle
 
 app = Flask(__name__)
-model = pickle.load(open("compressed_flight_rf.pkl", "rb"))
+f=bz2.BZ2File('compressed_flight_rf.pkl','rb')
+model = cPickle.load(f)
 
 
 
